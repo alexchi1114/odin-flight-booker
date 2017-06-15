@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_time: 
+  duration: 
+  from: 
+  to: 1
+
+two:
+  departure_time: 
+  duration: 
+  from: 
+  to: 1
