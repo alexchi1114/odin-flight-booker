@@ -1,0 +1,49 @@
+<h1>Flight Booker</h1>
+
+<%= form_for(flights_path, method: :get) do %>
+	<%= select_tag(:from_id, options_for_select(@flight_options), prompt: "From") %>
+	<%= select_tag(:to_id, options_for_select(@flight_options), prompt: "To") %>
+	<%= select_tag(:passengers, options_for_select(@passenger_options),prompt: "Number of Passengers") %>
+	<%= select_tag(:date, options_for_select(@date_options), prompt: "Date") %>
+	<%= submit_tag("Search Flights") %>
+
+<%end%>
+
+<h2>Choose a flight:</h2>
+
+<%= form_tag(new_booking_path, method: :get) do %>
+	<%= hidden_field_tag(:passengers, params[:passengers]) %>
+
+	<table>
+		<thead>
+			<tr>
+				<th width = "40"></th>
+				<th width = "50">Flight</th>
+				<th width = "150">Date</th>
+				<th width = "85">Time</th>
+				<th width = "50">From</th>
+				<th width = "50">To</th>
+				<th width = "90">Duration</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @matched_flights.each do |flight| %>
+				<tr>
+					<td><%= radio_button_tag :flight_id, flight.id %></td>
+					<td><%= flight.id %></td>
+					<td><%= flight.date%></td>
+					<td><%= flight.departure_time.strftime('%H:%M') %> </td>
+					<td><%= flight.from_airport.code %></td>
+					<td><%= flight.to_airport.code %></td>
+					<td><%= flight.duration%> hours</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= submit_tag("Select Flight") %>
+<%end%>
+
+
+
+

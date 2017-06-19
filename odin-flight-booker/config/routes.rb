@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
 
-	root 'static_pages#home'
+	get '/flights' => 'flights#index'
+
+	root 'flights#index'
+
+	resources :bookings, only: [:new]
 end
