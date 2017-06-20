@@ -1,0 +1,31 @@
+<h2>Your Booking</h2>
+<table>
+  <th>Flight number</th>
+  <th>Departing</th>
+  <th>Arriving</th>
+  <th>Date</th>
+  <th>Flight Duration</th>
+  <th>Passengers</th>
+    <tr>
+      <td><%= @flight.id%></td>
+      <td><%= @flight.from_airport.code %></td>
+      <td><%= @flight.to_airport.code %></td>
+      <td><%= @flight.date %></td>
+      <td><%= @flight.duration %> hours</td>
+      <td><%= @tickets %></td>
+    </tr>
+</table>
+
+<%= form_for(@booking, url: bookings_path) do |f| %>
+	<% count = 0 %>
+	<%= hidden_field_tag(:flight_id,  params[:flight_id]) %>
+    <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+
+	
+	<%= f.fields_for(:passengers) do |passenger| %>
+		<%= passenger.label :name, "Passenger #{count+=1}" %>
+	<%= passenger.text_field :name %>
+
+	<%end%>
+	<%= f.submit "Submit booking" %>
+<%end%>

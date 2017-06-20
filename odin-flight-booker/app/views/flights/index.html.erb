@@ -12,7 +12,7 @@
 <h2>Choose a flight:</h2>
 
 <%= form_tag(new_booking_path, method: :get) do %>
-	<%= hidden_field_tag(:passengers, params[:passengers]) %>
+	<%= hidden_field_tag(:tickets, params[:passengers]) %>
 
 	<table>
 		<thead>

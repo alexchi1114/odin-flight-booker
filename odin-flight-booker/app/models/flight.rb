@@ -1,6 +1,8 @@
 class Flight < ApplicationRecord
 	belongs_to :from_airport, :foreign_key => :from, :class_name => "Airport"
 	belongs_to :to_airport, :foreign_key => :to, :class_name => "Airport"
+	has_many :bookings
+	
 
 	def self.possible_dates
 		all_dates = Flight.all.map{|flight| flight.departure_time.to_date}.uniq
