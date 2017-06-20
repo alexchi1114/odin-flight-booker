@@ -1,1 +1,22 @@
-You booked a flight!
+<h2>You booked a flight!</h2>
+
+<table>
+  <th>Flight number</th>
+  <th>Departing</th>
+  <th>Arriving</th>
+  <th>Date</th>
+  <th>Flight Duration</th>
+  <%@booking.passengers.count.times do |index| %>
+  	<th> Passenger <%=index+1%> </th>
+  <%end%>
+    <tr>
+      <td><%= @booking.flight.id%></td>
+      <td><%= @booking.flight.from_airport.code %></td>
+      <td><%= @booking.flight.to_airport.code %></td>
+      <td><%= @booking.flight.date %></td>
+      <td><%= @booking.flight.duration %> hours</td>
+      <%@booking.passengers.count.times do |index| %>
+      	<td><%=@booking.passengers[index].name%></td>
+      <%end%>
+    </tr>
+</table>

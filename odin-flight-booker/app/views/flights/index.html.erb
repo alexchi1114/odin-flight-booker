@@ -9,6 +9,8 @@
 
 <%end%>
 
+<% if !@matched_flights.empty? %>
+
 <h2>Choose a flight:</h2>
 
 <%= form_tag(new_booking_path, method: :get) do %>
@@ -44,6 +46,7 @@
 	<%= submit_tag("Select Flight") %>
 <%end%>
 
+<%end%>
 
 
 
