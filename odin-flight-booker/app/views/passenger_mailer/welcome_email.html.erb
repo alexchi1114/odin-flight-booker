@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to the flight booker, <%= @passenger.name %></h1>
+    <p>
+      You have successfully booked a flight:
+    </p>
+    <br>
+
+    <p>
+      Flight number: <%=@passenger.booking.flight.id%>
+      <br>
+      Departing: <%=@passenger.booking.flight.from_airport.code %>
+      <br>
+      Arriving: <%=@passenger.booking.flight.to_airport.code %>
+      <br>
+      Date: <%=@passenger.booking.flight.date %>
+    </p>
+    
+    
+  </body>
+</html>

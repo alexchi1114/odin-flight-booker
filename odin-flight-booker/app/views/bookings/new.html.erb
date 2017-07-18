@@ -25,6 +25,8 @@
 	<%= f.fields_for(:passengers) do |passenger| %>
 		<%= passenger.label :name, "Passenger #{count+=1}" %>
 	<%= passenger.text_field :name %>
+  <%= passenger.label :email%>
+  <%=passenger.text_field :email %>
 
 	<%end%>
 	<%= f.submit "Submit booking" %>

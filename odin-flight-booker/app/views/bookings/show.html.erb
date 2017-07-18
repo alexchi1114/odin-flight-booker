@@ -17,6 +17,7 @@
       <td><%= @booking.flight.duration %> hours</td>
       <%@booking.passengers.count.times do |index| %>
       	<td><%=@booking.passengers[index].name%></td>
+        <td><%=@booking.passengers[index].email%></td>
       <%end%>
     </tr>
 </table>

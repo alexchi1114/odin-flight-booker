@@ -10,6 +10,9 @@ class BookingsController < ApplicationController
 		@booking = Booking.new(booking_params)
 		
 		if @booking.save
+			@booking.passengers.each do |passenger|
+				PassengerMailer.welcome_email(passenger).deliver_now
+			end
 			redirect_to @booking
 		else
 			@flight = Flight.find(params[:flight_id])
@@ -35,6 +38,6 @@ class BookingsController < ApplicationController
 
     def booking_params
       	params.require(:booking).permit(:flight_id, 
-  		                              :passengers_attributes => [:name])
+  		                              :passengers_attributes => [:name, :email])
     end
 end
